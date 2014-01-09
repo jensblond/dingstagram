@@ -1,4 +1,4 @@
-/* dingstagram 0.8 – A simple jQuery Instagram plugin for developers
+/* dingstagram 0.8 - A simple jQuery Instagram plugin for developers
  *
  * Copyright (c) 2014 Martin Szymanski (http://www.elfacht.com)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
@@ -69,12 +69,16 @@
 						caption = '';
 
 				// define the image sizes
-				if (settings.size === 'thumbnail') {
-					itemImg = data.data[i].images.thumbnail.url;
-				} else if (settings.size === 'standard') {
-					itemImg = data.data[i].images.standard_resolution.url;
-				} else if (settings.size === 'low') {
-					itemImg = data.data[i].images.low_resolution.url;
+				switch (settings.size) {
+					case 'thumbnail':
+						itemImg = data.data[i].images.thumbnail.url;
+						break;
+					case 'standard':
+						itemImg = data.data[i].images.standard_resolution.url;
+						break;
+					case 'low':
+						itemImg = data.data[i].images.low_resolution.url;
+						break;
 				}
 
 				// truncate caption
