@@ -38,11 +38,11 @@ To register an application and get the credentials you need to do three things:
 
 | Option       | Description 
 | -------------|-------------
-| **size**     | *string* | Use `low`, `standard`or `thumbnail` for image size
-| **items**    | *int* | Default and limit is 20 due the API limit of instagram (working on pagination). 
-| **caption**  | *boolean* | Displays the caption text (default: true)
-| **truncate** | *int* | Truncates the caption to the value you set (default: 0)
-| **blank**    | *boolean* | Adds a target="_blank" to the links (default: false)
+| **size**     | *string* | Use `low`, `standard`or `thumbnail` for image size |
+| **items**    | *int* | Default and limit is 20 due the API limit of instagram (working on pagination). |
+| **caption**  | *boolean* | Displays the caption text (default: true) |
+| **truncate** | *int* | Truncates the caption to the value you set (default: 0) |
+| **blank**    | *boolean* | Adds a target="_blank" to the links (default: false) |
 
 Example with defaults: 
  
