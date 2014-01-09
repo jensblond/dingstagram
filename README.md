@@ -91,6 +91,15 @@ For example the HTML output:
 Dual licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) 
 and [GPL 3.0](http://opensource.org/licenses/GPL-3.0) licenses.
 
+### Roadmap
+
++ Show certain amount of images (more than 20)
++ Show entire stream
++ Show array of images
++ Outsource functions to modules to include only the functions you'll need
++ Pagination
++ Build a JavaScript only version of this plugin
+
 ### Changelog
 
 0.8.1 – added **baseClass** option; minor fixes
