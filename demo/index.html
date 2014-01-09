@@ -26,7 +26,10 @@ $(function() {
 		caption: false,
 		items: 5,
 		truncate: 100,
-		targetBlank: true
+		targetBlank: true,
+		complete: function() {
+			$('#instagram').append('<p>done</p>');
+		}
 	});
 
 });
