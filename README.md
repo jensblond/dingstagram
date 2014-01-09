@@ -47,6 +47,8 @@ To register an application and get the credentials you need to do three things:
 Example with defaults: 
  
 	$('#instagram').dingstagram({
+		userID: '25025320', // demo with the @instagram account
+		accessToken: '538504697.570e13a.d39b590cd958491497d722ae2f7d3501', // please don't use this one
 		size: 'low',
 		items: 20,
 		caption: true,
