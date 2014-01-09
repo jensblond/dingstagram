@@ -1,0 +1,58 @@
+/*
+ * Example CSS – feel free to modify!
+ */
+
+/* =Global setting
+------------------------------------------------------*/
+.dingstagram * {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/* =Container
+------------------------------------------------------*/
+.dingstagram {
+	list-style: none;
+	padding: 0;
+	*zoom: 1;
+	&:before,
+  &:after {
+  	display: table;
+  	content: "";
+  }
+
+  &:after {
+  	clear: both;
+  }
+}
+
+/* =List item
+------------------------------------------------------*/
+.dingstagram-item {
+	//float: left;
+	position: relative;
+}
+
+/* =Figure container / caption
+------------------------------------------------------*/
+.dingstagram-figure,
+.dingstagram-caption {
+	display: inline-block;
+}
+
+.dingstagram-figure {
+	margin: 0;
+	padding: 0;
+}
+
+.dingstagram-caption {}
+
+/* =Link / image
+------------------------------------------------------*/
+.dingstagram-link,
+.dingstagram-img {
+	display: block;
+}
+
+.dingstagram-img {}

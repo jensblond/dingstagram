@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>dingstagram</title>
+	<link rel="stylesheet" href="css/jquery.dingstagram.css" media="all" />
+</head>
+<body>
+
+<h1>dingstagram</h1>
+
+<h2>Example with @instagram</h2>
+
+<ul id="instagram"></ul>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script src="js/jquery.dingstagram.js"></script>
+
+<script>
+$(function() {
+
+	$('#instagram').dingstagram({
+		userID: '25025320', // demo with the @instagram account
+		accessToken: '538504697.570e13a.d39b590cd958491497d722ae2f7d3501', // please don't use this one
+		items: 5,
+		truncate: 100,
+		blank: true
+	});
+
+});
+</script>
+
+</body>
+</html>
