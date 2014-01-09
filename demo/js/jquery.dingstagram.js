@@ -23,7 +23,7 @@
 			caption: true, // displays caption
 			truncate: 0, // truncate captions
 			targetBlank: false, // adds target="_blank" to links
-			complete: {}
+			complete: function() {}
 		}, options);
 
 		var apiURL = 'https://api.instagram.com/v1/users/'+settings.userID+'/media/recent/?access_token='+settings.accessToken,
