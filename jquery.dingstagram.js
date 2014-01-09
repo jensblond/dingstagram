@@ -1,4 +1,4 @@
-/* dingstagram 0.8.1 - A simple jQuery Instagram plugin for developers
+/* dingstagram 0.8.2 - A simple jQuery Instagram plugin for developers
  *
  * GitHub: https://github.com/elfacht/dingstagram
  * Copyright (c) 2014 Martin Szymanski (http://www.elfacht.com)
@@ -19,9 +19,11 @@
 			baseClass: 'dingstagram', // default CSS class
 			size: 'low', // low, standard, thumbnail
 			items: 20, // max. items
+			showAll: false, // show all images
 			caption: true, // displays caption
 			truncate: 0, // truncate captions
-			blank: false // adds target="_blank" to links
+			targetBlank: false, // adds target="_blank" to links
+			complete: {}
 		}, options);
 
 		var apiURL = 'https://api.instagram.com/v1/users/'+settings.userID+'/media/recent/?access_token='+settings.accessToken,
@@ -42,19 +44,58 @@
 					cache: false,
 					url: apiURL,
 					success: function(data, status) {
-						var items = settings.items -1;
+						var items = settings.items -1; // chosen amount of images
 
-						// loop the data
-						$.each(data.data, function(i) {
-							Instagram.template(data, i);
-							return i < items; // limit the loop
-						});
+						switch (settings.showAll) {
 
-						// add classes to the target
+							/* Show all images */
+							case true:
+								Instagram.outputAll(apiURL, 0);
+								break;
+
+							/* Show chosen amount of images */
+							case false:
+
+								/* Loop the data */
+								$.each(data.data, function(i) {
+									Instagram.template(data, i);
+									return i < items; // limit the loop
+								});
+
+								settings.complete(); // custom complete callback
+								break;
+						}
+
+						/* Add classes to the target */
 						Instagram.addClasses();
 					}
 				});
 			},
+
+			/* =Output all items
+			------------------------------------------------------*/
+			outputAll: function(next_url, count) {
+	    	$.ajax({
+	        method: "GET",
+	        url: next_url,
+	        dataType: "jsonp",
+	        jsonp: "callback",
+	        jsonpCallback: "jsonpcallback",
+	        cache: false,
+	        success: function(data, status) {
+            $.each(data.data, function(k,v){
+              Instagram.template(data, k); // get the item template
+            });
+
+            /* If the next url is not null END && count < 1 (2 request) */
+            if (data.pagination.next_url) {
+              Instagram.outputAll(data.pagination.next_url, ++count); // continue the loop
+            } else {
+            	settings.complete(); // custom complete callback
+            }
+	        }
+	      })
+	    },
 
 			/* =Create the items template
 			------------------------------------------------------*/
@@ -65,11 +106,20 @@
 						captionClass = settings.baseClass + '-caption',
 						figureClass = settings.baseClass + '-figure',
 						itemURL = data.data[i].link,
-						itemCaption = data.data[i].caption.text,
+						itemCaption = '',
 						itemImg = '',
 						caption = '';
 
-				// define the image sizes
+				/* Avoid null on empty captions and set caption variable */
+				if (data.data[i].caption !=null) {
+					if(data.data[i].caption.text != null) {
+						var itemCaption = data.data[i].caption.text;
+					}
+				} else {
+					var itemCaption = '';
+				}
+
+				/* Define the image sizes */
 				switch (settings.size) {
 					case 'thumbnail':
 						itemImg = data.data[i].images.thumbnail.url;
@@ -82,17 +132,17 @@
 						break;
 				}
 
-				// truncate caption
+				/* Truncate caption */
 				if (settings.truncate > 0) {
 					itemCaption = Instagram.truncate(itemCaption, settings.truncate);
 				}
 
-				// append figcaption if true
+				/* Append figcaption if true */
 				if (settings.caption === true) {
 					caption = $(document.createElement('figcaption')).attr({'class': captionClass}).html(itemCaption)
 				}
 
-				// creates the HTML elements
+				/* Creates the HTML elements */
 				var items =
 						$(document.createElement('li')).attr({'class': itemClass}).append( // list item
 							$(document.createElement('figure')).attr({'class': figureClass}).append( // figure container
@@ -102,11 +152,11 @@
 							).append(caption)
 						);
 
-				// append the list to the target
+				/* Append the list to the target */
 				target.append(items);
 
-				// add target=_blank
-				if (settings.blank === true) {
+				/* Add target=_blank */
+				if (settings.targetBlank === true) {
 					$('.'+linkClass).attr('target', '_blank');
 				}
 			},

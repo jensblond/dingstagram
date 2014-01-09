@@ -40,10 +40,12 @@ To register an application and get the credentials you need to do three things:
 | -------------|-------------
 | **baseClass** | *string* – Use our own CSS class. It will replace the `dingstagram-`from all class outputs (default: dingstagram)
 | **size**     | *string* - Use `low`, `standard`or `thumbnail` for image size |
-| **items**    | *int* - Default and limit is 20 due the API limit of instagram (working on pagination). |
+| **items**    | *int* - Default and **the limit is 20 images** due the API limit of instagram (working on pagination). |
+| **showAll** | *boolean* | Shows the entire collection. **WARNING:** This option is only for smaller collections of images. If you do this with popular tags, locations or accounts you will throw a resource exception! (default: false)
 | **caption**  | *boolean* - Displays the caption text (default: true) |
 | **truncate** | *int* - Truncates the caption to the value you set (default: 0) |
-| **blank**    | *boolean* - Adds a target="_blank" to the links (default: false) |
+| **targetBlank**    | *boolean* - Adds a target="_blank" to the links (default: false) |
+| **complete** | *function* - Custom callback function on complete
 
 Example with defaults: 
  
@@ -53,9 +55,13 @@ Example with defaults:
 		baseClass: 'dingstagram',
 		size: 'low',
 		items: 20,
+		showAll: false,
 		caption: true,
 		truncate: 0,
-		blank: false
+		targetBlank: false,
+		complete: function() {
+			// custom callback
+		}
 	});
 	
 #### CSS
@@ -94,15 +100,17 @@ and [GPL 3.0](http://opensource.org/licenses/GPL-3.0) licenses.
 ### Roadmap
 
 + Show certain amount of images (more than 20)
-+ Show entire stream
++ <del>Show entire collection</del>
 + Show array of images
 + Loading animation
-+ Options to add custom callback functions
++ <del>Options to add custom callback functions on complete</del>
 + Outsource functions to modules to include only the functions you'll need
 + Pagination
 + Build a JavaScript-only version of this plugin
 
 ### Changelog
+
+0.8.2 – added **showAll** option and **custom callbacks on complete**
 
 0.8.1 – added **baseClass** option; minor fixes
 
