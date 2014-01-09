@@ -1,7 +1,8 @@
-/* dingstagram – v0.8
- * https://github.com/elfacht/dingstagram
- * @author Martin Szymanski / www.elfacht.com
- * @version 0.8
+/* dingstagram 0.8 – A simple jQuery Instagram plugin for developers
+ *
+ * Copyright (c) 2014 Martin Szymanski (http://www.elfacht.com)
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ * and GPL (http://opensource.org/licenses/GPL-3.0) licenses.
  */
 (function($) {
 
@@ -14,6 +15,7 @@
 		var settings = $.extend({
 			userID: '',
 			accessToken: '',
+			baseClass: 'dingstagram', // default CSS class
 			size: 'low', // low, standard, thumbnail
 			items: 20, // max. items
 			caption: true, // displays caption
@@ -43,8 +45,8 @@
 
 						// loop the data
 			      $.each(data.data, function(i) {
-			        if (i > items) return false;
-			        Instagram.template(data, i);
+			      	Instagram.template(data, i);
+			        return i < items; // limit the loop
 			      });
 
 			      // add classes to the target
@@ -56,11 +58,11 @@
 	    /* =Create the items template
 	    ------------------------------------------------------*/
 	    template: function(data, i) {
-	    	var itemClass = 'dingstagram-item',
-	    			linkClass = 'dingstagram-link',
-	    			imgClass = 'dingstagram-img',
-	    			captionClass = 'dingstagram-caption',
-	    			figureClass = 'dingstagram-figure',
+	    	var itemClass = settings.baseClass + '-item',
+	    			linkClass = settings.baseClass + '-link',
+	    			imgClass = settings.baseClass + '-img',
+	    			captionClass = settings.baseClass + '-caption',
+	    			figureClass = settings.baseClass + '-figure',
 	    			itemURL = data.data[i].link,
 	    			itemCaption = data.data[i].caption.text,
 	    			itemImg = '',
@@ -107,9 +109,11 @@
 	    /* =Add classes to target
 	    ------------------------------------------------------*/
 	    addClasses: function() {
-	    	target.addClass('dingstagram');
+	    	target.addClass(settings.baseClass);
 	    },
 
+	    /* =Truncate the caption
+	    ------------------------------------------------------*/
 	    truncate: function(content, value) {
 	    	var content = $.trim(content).substring(0, value).split(' ').slice(0, -1).join(' ') + '...';
 	    	return content;

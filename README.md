@@ -38,6 +38,7 @@ To register an application and get the credentials you need to do three things:
 
 | Option       | Description 
 | -------------|-------------
+| **baseClass** | *string* – Use our own CSS class. It will replace the `dingstagram-`from all class outputs (default: dingstagram)
 | **size**     | *string* - Use `low`, `standard`or `thumbnail` for image size |
 | **items**    | *int* - Default and limit is 20 due the API limit of instagram (working on pagination). |
 | **caption**  | *boolean* - Displays the caption text (default: true) |
@@ -49,6 +50,7 @@ Example with defaults:
 	$('#instagram').dingstagram({
 		userID: '25025320', // demo with the @instagram account
 		accessToken: '538504697.570e13a.d39b590cd958491497d722ae2f7d3501', // please don't use this one
+		baseClass: 'dingstagram',
 		size: 'low',
 		items: 20,
 		caption: true,
@@ -90,5 +92,7 @@ Dual licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php
 and [GPL 3.0](http://opensource.org/licenses/GPL-3.0) licenses.
 
 ### Changelog
+
+0.8.1 – added **baseClass** option; minor fixes
 
 0.8 – initial release
