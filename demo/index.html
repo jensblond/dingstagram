@@ -20,11 +20,17 @@
 $(function() {
 
 	$('#instagram').dingstagram({
-		userID: '25025320', // demo with the @instagram account
+		userID: '538504697', // demo with the @instagram account
 		accessToken: '538504697.570e13a.d39b590cd958491497d722ae2f7d3501', // please don't use this one
+		showAll: true,
+		size: 'thumbnail',
+		caption: false,
 		items: 5,
 		truncate: 100,
-		blank: true
+		targetBlank: true,
+		complete: function() {
+			console.log('fertig')
+		}
 	});
 
 });
