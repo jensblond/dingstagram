@@ -27,6 +27,7 @@
 /* =List item
 ------------------------------------------------------*/
 .dingstagram-item {
+  float: left;
   position: relative;
 }
 
