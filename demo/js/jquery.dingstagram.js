@@ -1,5 +1,6 @@
-/* dingstagram 0.8 - A simple jQuery Instagram plugin for developers
+/* dingstagram 0.8.1 - A simple jQuery Instagram plugin for developers
  *
+ * GitHub: https://github.com/elfacht/dingstagram
  * Copyright (c) 2014 Martin Szymanski (http://www.elfacht.com)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://opensource.org/licenses/GPL-3.0) licenses.
