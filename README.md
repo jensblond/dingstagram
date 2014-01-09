@@ -98,7 +98,7 @@ and [GPL 3.0](http://opensource.org/licenses/GPL-3.0) licenses.
 + Show array of images
 + Outsource functions to modules to include only the functions you'll need
 + Pagination
-+ Build a JavaScript only version of this plugin
++ Build a JavaScript-only version of this plugin
 
 ### Changelog
 
