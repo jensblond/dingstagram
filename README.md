@@ -96,6 +96,8 @@ and [GPL 3.0](http://opensource.org/licenses/GPL-3.0) licenses.
 + Show certain amount of images (more than 20)
 + Show entire stream
 + Show array of images
++ Loading animation
++ Options to add custom callback functions
 + Outsource functions to modules to include only the functions you'll need
 + Pagination
 + Build a JavaScript-only version of this plugin
