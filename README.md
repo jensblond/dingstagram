@@ -7,7 +7,7 @@ Twitter: [@elfacht](https://twitter.com/elfacht)
 
 
 ### About
-dingstram is a tiny jQuery plugin to display Instagram feeds. It's for developers who prefer to have full control over the CSS. You can use the CSS/SCSS example or create your own based on a few defined classes.
+dingstagram is a tiny jQuery plugin to display Instagram feeds. It's for developers who prefer to have full control over the CSS. You can use the CSS/SCSS example or create your own based on a few defined classes.
 
 ### Usage
 
