@@ -118,7 +118,6 @@
 	    	var content = $.trim(content).substring(0, value).split(' ').slice(0, -1).join(' ') + '...';
 	    	return content;
 	    }
-
 		}
 
 		/* =Init it
